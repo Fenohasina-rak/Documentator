@@ -7,6 +7,7 @@ import org.acme.Models.File.ProjectFile;
 import org.acme.Models.File.ProjectStructure;
 import org.acme.Models.Gemini.GeminiRequest;
 import org.acme.Models.Gemini.GeminiResponse;
+import org.eclipse.microprofile.config.ConfigProvider;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.logging.Logger;
@@ -22,11 +23,11 @@ public class GeminiService {
     @RestClient
     GeminiClient geminiClient;
 
-    @ConfigProperty(name = "gemini.api.key")
-    String apiKey;
+    String apiKey = ConfigProvider.getConfig().getValue("gemini.api.key", String.class);
 
-    @ConfigProperty(name = "gemini.model", defaultValue = "gemini-1.5-flash")
-    String model;
+    String model = ConfigProvider.getConfig().getValue("gemini.model", String.class);
+
+    Integer charactersLimit = ConfigProvider.getConfig().getValue("gemini.limit.characters", Integer.class);
 
     public String generateContent(String prompt) {
         GeminiRequest request = new GeminiRequest(
@@ -82,7 +83,7 @@ public class GeminiService {
         }
 
         sb.append("\n\n=== SOURCE CODE ===\n\n");
-        appendCodeContext(sb, structure, 120000);
+        appendCodeContext(sb, structure, charactersLimit);
 
         return sb.toString();
     }
@@ -111,7 +112,7 @@ public class GeminiService {
                 
                 """.formatted(structure.projectName()));
 
-        appendCodeContext(sb, structure, 120000);
+        appendCodeContext(sb, structure, charactersLimit);
         return sb.toString();
     }
 
@@ -139,7 +140,7 @@ public class GeminiService {
                 
                 """.formatted(structure.projectName()));
 
-        appendCodeContext(sb, structure, 120000);
+        appendCodeContext(sb, structure, charactersLimit);
         return sb.toString();
     }
 

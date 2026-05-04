@@ -10,7 +10,6 @@ import org.jboss.logging.Logger;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 
 @QuarkusMain
@@ -31,10 +30,11 @@ public class DocumentationGeneratorApp implements QuarkusApplication {
     public int run(String... args) throws Exception {
         // Allow overriding source path via CLI argument
         String targetPath = (args.length > 0) ? args[0] : sourcePath;
-
+        System.out.println(targetPath);
         LOG.infof("Target path: %s", targetPath);
 
-        Path path = Paths.get(targetPath);
+
+        Path path = Path.of(targetPath);
         if (!Files.exists(path)) {
             LOG.errorf("Path does not exist: %s", targetPath);
             return 1;
