@@ -42,25 +42,38 @@ public class DocumentationGeneratorService {
         try{
             architectureHtml = geminiService.generateContent(geminiService.buildArchitecturePrompt(structure));
         } catch (Exception e) {
-            architectureHtml = "<div class=\"error-section\"><p>Could not generate " + "Architecture" +
-                    " documentation. Error: " + escapeHtml(e.getMessage()) + "</p>" +
-                    "<p>Please check your GEMINI_API_KEY and network connection.</p></div>";
+            try{
+                architectureHtml = geminiService.generateContent(geminiService.buildArchitecturePrompt(structure));
+            } catch (Exception ex) {
+                architectureHtml = "<div class=\"error-section\"><p>Could not generate " + "Architecture" +
+                        " documentation. Error: " + escapeHtml(e.getMessage()) + "</p>" +
+                        "<p>Please check your GEMINI_API_KEY and network connection.</p></div>";
+            }
         }
         // Step 3: Generate API Specification
         try{
             apiHtml = geminiService.generateContent(geminiService.buildApiSpecPrompt(structure));
         } catch (Exception e) {
-            apiHtml = "<div class=\"error-section\"><p>Could not generate " + "API Specification" +
-                    " documentation. Error: " + escapeHtml(e.getMessage()) + "</p>" +
-                    "<p>Please check your GEMINI_API_KEY and network connection.</p></div>";
+            try{
+                apiHtml = geminiService.generateContent(geminiService.buildApiSpecPrompt(structure));
+            } catch (Exception ex) {
+                apiHtml = "<div class=\"error-section\"><p>Could not generate " + "API Specification" +
+                        " documentation. Error: " + escapeHtml(e.getMessage()) + "</p>" +
+                        "<p>Please check your GEMINI_API_KEY and network connection.</p></div>";
+            }
         }
         // Step 4: Generate ERD
         try{
             erdHtml = geminiService.generateContent(geminiService.buildErdPrompt(structure));
         } catch (Exception e) {
-            erdHtml = "<div class=\"error-section\"><p>Could not generate " + "ERD" +
-                    " documentation. Error: " + escapeHtml(e.getMessage()) + "</p>" +
-                    "<p>Please check your GEMINI_API_KEY and network connection.</p></div>";
+            try {
+                erdHtml = geminiService.generateContent(geminiService.buildErdPrompt(structure));
+            } catch (Exception ex) {
+                erdHtml = "<div class=\"error-section\"><p>Could not generate " + "ERD" +
+                        " documentation. Error: " + escapeHtml(e.getMessage()) + "</p>" +
+                        "<p>Please check your GEMINI_API_KEY and network connection.</p></div>";
+            }
+
         }
 
         // Assemble full HTML document
