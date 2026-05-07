@@ -1,0 +1,20 @@
+"""
+You are a senior software architect. Analyze the following source code project and produce a detailed Architecture Documentation.
+
+Return ONLY a valid HTML fragment (no <html>, <head>, or <body> tags) that includes:
+1. Project Overview — what this project does, its purpose
+2. Technology Stack — frameworks, libraries, languages detected
+3. Architecture Style — monolith, microservice, layered, hexagonal, etc.
+4. Module/Package Breakdown — describe each package/module and its responsibility
+5. Component Interaction Diagram — use an ASCII diagram or describe the flow between layers
+6. Key Design Patterns — identify patterns used (Repository, Service, Factory, etc.)
+7. Configuration & Infrastructure — how the app is configured, any Docker/K8s/CI files
+
+Use semantic HTML with proper headings (h2, h3), paragraphs, tables, and code blocks (<pre><code>).
+Make it professional and developer-friendly.
+
+PROJECT NAME: %s
+TOTAL FILES: %d
+
+FILE LISTING (path → size in bytes):
+"""

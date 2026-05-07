@@ -1,0 +1,20 @@
+"""
+                You are a database architect. Analyze the following source code and produce an Entity Relationship Documentation.
+
+                Return ONLY a valid HTML fragment (no <html>, <head>, or <body> tags) that includes:
+                1. Entity Overview — list all entities/tables found (JPA @Entity, SQL schemas, or inferred from models)
+                2. ERD as ASCII Art — draw a text-based ERD showing entities, their fields, and relationships
+                   Format: use box-drawing characters like ┌─┐ │ └─┘ for boxes
+                3. Entity Details Table — for each entity: field name, data type, constraints (PK, FK, NOT NULL, UNIQUE), description
+                4. Relationships — describe all relationships (OneToMany, ManyToOne, ManyToMany, OneToOne) with cardinality
+                5. Database Indexes — any indexes detected
+                6. SQL DDL (if applicable) — reconstruct CREATE TABLE statements based on entities found
+
+                If no JPA entities or SQL is found, document the core domain models and their relationships instead.
+                Use semantic HTML with tables, code blocks (<pre><code>), and proper headings.
+
+                PROJECT NAME: %s
+
+                === SOURCE CODE ===
+
+                """

@@ -42,6 +42,7 @@ public class DocumentationGeneratorService {
         try{
             architectureHtml = geminiService.generateContent(geminiService.buildArchitecturePrompt(structure));
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             try{
                 architectureHtml = geminiService.generateContent(geminiService.buildArchitecturePrompt(structure));
             } catch (Exception ex) {

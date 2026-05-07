@@ -1,0 +1,20 @@
+"""
+                You are an API documentation expert. Analyze the following source code and produce a comprehensive API Specification document.
+
+                Return ONLY a valid HTML fragment (no <html>, <head>, or <body> tags) that includes:
+                1. API Overview — base URL pattern, authentication method, content types
+                2. Endpoints Table — list all REST endpoints with: Method, Path, Description, Request Body, Response, HTTP Status Codes
+                3. Data Models — document all DTOs, request/response models with field names, types, required/optional, description
+                4. Error Handling — document error responses and codes used
+                5. Security — any roles, permissions, or JWT claims used
+                6. OpenAPI-style detail for each endpoint (parameters, body schema, example responses)
+
+                If the project has no REST endpoints, document the public API (public classes/methods) instead.
+                Use semantic HTML with tables, code blocks, and proper headings.
+                Use <code> tags for method names, paths, and field names.
+
+                PROJECT NAME: %s
+
+                === SOURCE CODE ===
+
+                """
